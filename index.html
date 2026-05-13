@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Bestie! 🎉</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #9b59b6, #34495e);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      background: #f39c12;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🎉 Happy 23rd Birthday! 🎉</h1>
+  <h2>To My Best Friend</h2>
+
+  <p>
+    Happy Birthday to one of the most amazing people in my life!  
+    I’m so grateful for all the memories we’ve shared, the laughs we’ve had,  
+    and the support we give each other. I hope your 23rd year is filled with 
+    joy, success, and all the love you deserve. Always stay true to yourself — 
+    you’re incredible.
+  </p>
+
+  <button class="button" onclick="playConfetti()">Wish You More!</button>
+
+  <script>
+    // Simple confetti animation in purple, pink, yellow
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function playConfetti() {
+      const colors = ['#9b59b6', '#f39c12', '#e91e63', '#3498db'];
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.backgroundColor = colors[Math.floor(random(0, colors.length))];
+        
+        // Random position
+        confetti.style.left = random(0, 100) + 'vw';
+        confetti.style.top = random(0, 100) + 'vh';
+        
+        document.body.appendChild(confetti);
+
+        // Animation
+        setTimeout(() => {
+          confetti.style.opacity = '1';
+          confetti.style.transform = 'translateY(100vh) rotate(' + random(-360, 360) + 'deg)';
+          confetti.style.transition = 'all 2s ease-out';
+        }, 10);
+
+        // Clean up
+        setTimeout(() => {
+          confetti.remove();
+        }, 2100);
+      }
+    }
+  </script>
+</body>
+</html>
